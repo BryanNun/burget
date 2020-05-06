@@ -2,12 +2,21 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ApiResource(
+ *  normalizationContext={
+ *      "groups"={"categories_read"}
+ *  }
+ * )
  */
 class Category
 {
@@ -15,27 +24,34 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"categories_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"categories_read"})
+     * @Assert\NotBlank(message="Le nom de la categorie est obligatoire")
+     * @Assert\Length(min=2, minMessage="Le nom de la catégorie doit faire entre 2 et 255 caractères", max=255, maxMessage="Le nom de la catégorie doit faire entre 2 et 255 caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"categories_read"})
      */
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Paintings", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Painting", mappedBy="category")
+     * @Groups({"categories_read"})
+     * @ApiSubresource
      */
-    private $paintings;
+    private $painting;
 
     public function __construct()
     {
-        $this->paintings = new ArrayCollection();
+        $this->painting = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,27 +84,27 @@ class Category
     }
 
     /**
-     * @return Collection|Paintings[]
+     * @return Collection|Painting[]
      */
-    public function getPaintings(): Collection
+    public function getPainting(): Collection
     {
-        return $this->paintings;
+        return $this->painting;
     }
 
-    public function addPainting(Paintings $painting): self
+    public function addPainting(Painting $painting): self
     {
-        if (!$this->paintings->contains($painting)) {
-            $this->paintings[] = $painting;
+        if (!$this->painting->contains($painting)) {
+            $this->painting[] = $painting;
             $painting->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removePainting(Paintings $painting): self
+    public function removePainting(Painting $painting): self
     {
-        if ($this->paintings->contains($painting)) {
-            $this->paintings->removeElement($painting);
+        if ($this->painting->contains($painting)) {
+            $this->painting->removeElement($painting);
             // set the owning side to null (unless already changed)
             if ($painting->getCategory() === $this) {
                 $painting->setCategory(null);
