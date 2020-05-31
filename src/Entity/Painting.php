@@ -50,6 +50,11 @@ class Painting
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $online;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -99,6 +104,23 @@ class Painting
     public function setCategory(?category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
 
         return $this;
     }

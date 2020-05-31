@@ -1,0 +1,21 @@
+easy_admin:
+  design:
+    menu:
+      - {entity: 'Category', icon: 'inbox', label: 'Catégories'}
+      - {entity: 'Painting', icon: 'newspaper-o', label: 'Tableaux'}
+  entities:
+    Category:
+      class: App\Entity\Category
+      form:
+        fields:
+          - {property: 'name', label: 'Nom'}
+          - {property: 'description'}
+    Painting:
+      class: App\Entity\Painting
+      new:
+          fields:
+            - {property: 'name', label: 'Nom'}
+            - {property: 'descrition', label: 'Description'}
+            - {property: 'category', label: 'Catégorie'}
+            - {property: 'online', label: 'Mettre en ligne'}
+            - {property: 'picture', type: 'file', label: 'Photo'}
