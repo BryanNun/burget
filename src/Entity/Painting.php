@@ -51,7 +51,7 @@ class Painting
     private $category;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": true})
      */
     private $online;
 

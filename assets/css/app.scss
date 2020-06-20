@@ -1,0 +1,68 @@
+//Accueil
+
+.accueil {
+    background: radial-gradient(ellipse at bottom, #022227 0%, #000000 100%);
+     position: relative;
+     height: 100vh;
+     width: 100vw;
+     margin: 0;
+   }
+   
+   @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+   
+.title{
+     margin: 0;
+     font-family: 'Great Vibes', cursive;
+     font-size: 30vh;
+     letter-spacing: 1vw;
+     position: absolute;
+     padding-right: 2%;
+     top: 10vh;
+     left: 50%;
+     transform: translateX(-50%);
+     color: white;
+     // background:url('https://i.pinimg.com/originals/9f/9c/c5/9f9cc5217bb04790e5fb852b665ca2ff.jpg');
+     background:url('https://thumbs.dreamstime.com/b/tropical-flower-pattern-seamless-flowers-blossom-flowers-nature-background-vector-illustration-61142748.jpg');
+      background-size: auto 200%;
+     background-clip: text;
+     text-fill-color: transparent;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     animation: shine 10s linear infinite;
+     &:nth-child(2) {
+       top: 45vh;
+     }
+     @keyframes shine {
+       from {
+         background-position: center 0;
+       }
+       to {
+         background-position: center 200%;
+       }
+     }
+   }
+
+   a {
+    color: #555;
+    text-decoration: none;
+    border-bottom: 0.25rem solid transparent;
+    transition: all 0.4s;
+  }
+  a:hover {
+    color: #000;
+    border-bottom-color: rgba(0, 0, 0, 0.7);
+  }
+
+.acces{
+    left: 50%;
+    color: rgb(147, 147, 147);
+    text-decoration: none;
+    border-bottom: 0.25rem solid transparent;
+    transition: all 0.4s;
+    position: absolute;
+    top: 87vh;
+  }
+.acces:hover{
+    color: rgb(255, 255, 255);
+    border-bottom-color: rgba(255, 255, 255, 0.7);
+  }

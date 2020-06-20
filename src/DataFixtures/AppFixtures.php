@@ -26,7 +26,8 @@ class AppFixtures extends Fixture
                 $painting->setPicture($faker->imageUrl())
                         ->setDescrition($faker->text())
                         ->setName($faker->sentence())
-                        ->setCategory($category);
+                        ->setCategory($category)
+                        ->setOnline(true);
 
                 $manager->persist($painting);
             }
