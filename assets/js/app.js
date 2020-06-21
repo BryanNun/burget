@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from "react-dom";
 
 import '../css/app.scss';
-import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import { HashRouter, Switch, Route } from "react-router-dom";
 import GalleryPage from './pages/GalleryPage';
 import SlashPage from './pages/SlashPage';
 import ContactPage from './pages/ContactPage';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 console.log('coucou magueule');
@@ -16,12 +17,14 @@ const App = () => {
     return (
     <HashRouter>
             <main>
-                <Switch>
-                    <Route path="/galerie" component={GalleryPage}/>
-                    <Route path="/home" component={HomePage}/>
-                    <Route path="/contact" component={ContactPage}/>
-                    <Route path="/" component={SlashPage}/>
-                </Switch>
+                <AnimatePresence>
+                    <Switch>
+                        <Route path="/galerie" component={GalleryPage}/>
+                        <Route path="/about" component={AboutPage}/>
+                        <Route path="/contact" component={ContactPage}/>
+                        <Route path="/" component={SlashPage}/>
+                    </Switch>
+                </AnimatePresence>
             </main>
     </HashRouter>
     );

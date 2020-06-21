@@ -19,6 +19,7 @@
     "dependencies": {
         "axios": "^0.18.0",
         "chroma-js": "^2.1.0",
+        "framer-motion": "^1.11.1",
         "node-sass": "^4.14.1",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",

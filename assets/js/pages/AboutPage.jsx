@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/NavBar';
 import { motion } from 'framer-motion';
 
-const GalleryPage = (props) => {
+const AboutPage = (props) => {
     return ( 
         <>
         <motion.div
@@ -11,10 +11,10 @@ const GalleryPage = (props) => {
             transition={{ duration: 5 }}
             exit={{ opacity: 0 }}>
                 <Navbar/>
-                <h1>Galerie</h1>
+                <h1>A propos</h1>
         </motion.div>
         </>
     );
 }
 
-export default GalleryPage;
+export default AboutPage;
