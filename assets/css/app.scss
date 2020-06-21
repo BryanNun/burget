@@ -16,7 +16,7 @@
      font-size: 30vh;
      letter-spacing: 1vw;
      position: absolute;
-     padding-right: 2%;
+     padding: 2%;
      top: 10vh;
      left: 50%;
      transform: translateX(-50%);
@@ -60,7 +60,7 @@
     border-bottom: 0.25rem solid transparent;
     transition: all 0.4s;
     position: absolute;
-    top: 87vh;
+    top: 90vh;
   }
 .acces:hover{
     color: rgb(255, 255, 255);
